@@ -11,6 +11,23 @@
   <dt><strong><%= model_class.human_attribute_name(:completed) %>:</strong></dt>
   <dd><%= @project_task.completed %></dd>
 </dl>
+<%= @project_task.schedule %>
+<dl class="dl-horizontal">
+<dt>Duration:</dt>
+<dd><%= @project_task.schedule.duration %></dd>
+<br/>
+<dt>Schedule:</dt>
+<dd><%= @project_task.schedule %></dd>
+<br/>
+<dt>Upcomming Events:</dt>
+
+ <dd><% @project_task.schedule.first(10).each do |e| %>
+  <br/>
+  <%= link_to e.to_s, @project_task%>
+<% end %>
+</dd>
+</dl>
+<br />
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               project_tasks_path, :class => 'btn btn-default'  %>

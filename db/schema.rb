@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303194111) do
+ActiveRecord::Schema.define(version: 20150304030651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,8 +52,10 @@ ActiveRecord::Schema.define(version: 20150303194111) do
   create_table "task_occurrences", force: :cascade do |t|
     t.integer  "project_task_id"
     t.datetime "date"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "schedulable_id"
+    t.string   "schedulable_type"
   end
 
   add_index "task_occurrences", ["project_task_id"], name: "index_task_occurrences_on_project_task_id", using: :btree
